@@ -1,0 +1,69 @@
+version: "3.7"
+
+services:
+  postgresql:
+    tty: true
+    build:
+      context: ./postgresql/
+      dockerfile: Dockerfile
+    container_name: postgresql_container
+    restart: always
+    environment:
+      POSTGRES_USER: "feuille"
+      POSTGRES_PASSWORD: "secret"
+      POSTGRES_DB: "feuilleDb"
+      APP_DB_USER: "docker"
+      APP_DB_NAME: "docker"
+      APP_DB_PASS: "docker"
+      CHALL_FLAG: "ZiTF{d0763edaa9d9bd2a9516280e9044d885}"
+    networks:
+      - webappnetwork
+
+  server:
+    container_name: server_container
+    tty: true
+    build:
+      context: ./feuille-api/
+      target: prod
+    restart: always
+    depends_on:
+      - postgresql
+    ports:
+      - 3333:3333
+    env_file:
+      - ./feuille-api/.env
+    networks:
+      - webappnetwork
+
+  frontend:
+    container_name: frontend_container
+    tty: true
+    build:
+      context: ./feuille-website/
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - postgresql
+      - server
+    ports:
+      - 3000:3000
+    environment:
+      NEXT_PUBLIC_CONTAINER: "http://server_container:3333"
+    networks:
+      - webappnetwork
+
+        # pgstudio: 
+        #   tty: true
+        #   image: docker.io/lukasmartinelli/pgstudio 
+        #   profiles: ["debug"]
+        #   restart: always
+        #   depends_on:
+        #     - postgresql
+        #   ports:
+        #     - 8080:8080
+        #   networks:
+        #     - webappnetwork
+
+networks:
+  webappnetwork:
+    driver: bridge

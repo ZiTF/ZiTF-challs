@@ -1,0 +1,8 @@
+{
+  "links": [
+    { "href": "#about", "name": "A propos" },
+    { "href": "#services", "name": "Services" },
+    { "href": "#team", "name": "Membres" },
+    { "href": "#comments", "name": "Témoignages" }
+  ]
+}

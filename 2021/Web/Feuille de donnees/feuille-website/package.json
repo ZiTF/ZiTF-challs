@@ -1,0 +1,26 @@
+{
+  "name": "feuille-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.12.1",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.60",
+    "@material-ui/styles": "^4.11.4",
+    "axios": "^0.21.1",
+    "next": "11.0.0",
+    "react": "17.0.2",
+    "react-awesome-reveal": "^3.8.1",
+    "react-dom": "17.0.2",
+    "react-material-ui-carousel": "^2.2.6",
+    "react-spring": "^9.2.3"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.1"
+  }
+}

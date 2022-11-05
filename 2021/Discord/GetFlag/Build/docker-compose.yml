@@ -1,0 +1,9 @@
+version: "3.7"  # optional since v1.27.0
+services:
+  monkey_bot:
+    build: .
+    volumes:
+      - ./:/opt/monkeybot
+    image: monkey_bot
+    environment: 
+      - TOKEN=my_discord_bot_oauth2_token

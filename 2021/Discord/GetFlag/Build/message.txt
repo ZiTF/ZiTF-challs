@@ -1,0 +1,12 @@
+@everyone
+**Vous voulez acheter de délicieuses bananes mais vous n'avez pas d'argent ?**
+Ne vous en faîtes pas ! 
+Banana Deliveries se charge de vous régaler totalement gratuitement en échange d'un retour d'utilisation de son bot en cours de construction !
+Pour cela, utilisez notre bot developpé avec Python !
+
+Vous pouvez lui demander de créer un salon textuel où il se chargera de prendre votre commande dans le salon <#883472662981140571> avec :```!monkey hello``` 
+Puis vous pourrez lui indiquer combien de bananes vous voulez recevoir avec la commande :```!monkey order <nombre de bananes>```
+Il est également possible de nettoyer votre canal privé en utilisant la commande : ```!monkey nuke```
+Nous attendons vos retours au plus vite  !
+
+***Il est cependant interdit de prendre des commandes en dehors de vos salons assignés !***

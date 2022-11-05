@@ -1,0 +1,53 @@
+version: "3.7"
+
+services:
+  # main:
+  #   tty: true
+  #   container_name: server
+  #   image: localhost/main:latest
+  #   restart: always
+  #   depends_on:
+  #     - postgresql
+  #   ports:
+  #     - 3333:3333
+  #   env_file:
+  #     - .env
+
+  pgstudio: 
+    image: docker.io/lukasmartinelli/pgstudio 
+    container_name: pgstudio
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgresql
+    networks:
+      - webappnetwork
+
+  postgresql:
+    image: docker.io/postgres:latest
+    container_name: postgresql
+    restart: always
+    environment:
+      POSTGRES_USER: "feuille"
+      POSTGRES_PASSWORD: "secret"
+      POSTGRES_DB: "feuilleDb"
+      APP_DB_USER: "docker"
+      APP_DB_NAME: "docker"
+      APP_DB_PASS: "docker"
+      CHALL_FLAG: "ZiTF{d0763edaa9d9bd2a9516280e9044d885}"
+    ports:
+      - 8081:5432
+    volumes:
+      - "./postgres-data:/var/lib/postgresql/data"
+      - "./initdb:/docker-entrypoint-initdb.d/"
+    networks:
+      - webappnetwork
+
+volumes:
+  postgres-data:
+    driver: local
+
+networks:
+  webappnetwork:
+    driver: bridge

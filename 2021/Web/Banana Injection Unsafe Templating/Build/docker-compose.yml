@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+  banana_website:
+    build: ./app
+    restart: always
+    volumes:
+      - ./app/templates/:/templates
+      - ./app/flag/:/flag
+      - ./app/static:/static
+    ports:
+      - "5000:5000"
+    hostname: banana-injection.zitf.fr
+    depends_on:
+      - redis
+
+  bot:
+    build: ./bot
+    restart: always
+    init: true
+    environment:
+      - CHALL_HOST=banana-injection.zitf.fr
+      - CHALL_COOKIE=ZiTF{77b7bec119cef3b7e657ae8c619d9323}
+    depends_on:
+      - redis
+  
+  redis:
+    image: docker.io/redis:6.0-alpine
+    hostname: redis.zitf.fr

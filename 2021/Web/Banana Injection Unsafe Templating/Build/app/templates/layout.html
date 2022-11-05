@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+    <meta charset="UTF-8">
+        <link href="/static/css/tailwind.css" rel="stylesheet">
+        <title>{% block title %}{% endblock %} - Banana Injection</title>
+        <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+        <nav class="bg-gray-800 p-2 mt-0 fixed w-full z-10 top-0">
+            <div class="container mx-auto flex flex-wrap items-center">
+                <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+                    <a class="text-white no-underline hover:text-white hover:no-underline" href="#">
+                        <span class="text-2xl pl-2"><i class="em em-monkey"></i> Banana Injection</span>
+                    </a>
+                </div>
+                <div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+                    <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+                      <li class="mr-3">
+                        <a class="inline-block py-2 px-4 text-white no-underline" href="/hello">Hello</a>
+                      </li>
+                      <li class="mr-3">
+                        <a class="inline-block py-2 px-4 text-white no-underline" href="/report">Report</a>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </head>
+    <body>
+        <div class="container shadow-lg mx-auto bg-white mt-24 md:mt-16 h-screen" id="content">{% block content %}{% endblock %}</div>       
+    </body>
+    <footer class="footer bg-white relative pt-1 border-b-2 border-blue-700">
+        <div class="container mx-auto px-6">
+            <div class="mt-16 border-t-2 border-gray-300 flex flex-col items-center">
+                <div class="sm:w-2/3 text-center py-6">
+                    <p class="text-sm text-blue-700 font-bold mb-2">
+                        &copy; ZiTF 2021 by Cousky</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>   
+</html>
